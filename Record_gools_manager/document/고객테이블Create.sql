@@ -1,0 +1,9 @@
+CREATE TABLE 고객 (
+고객ID CHAR(10) NOT NULL PRIMARY KEY,
+고객이름 VARCHAR(20) NOT NULL,
+전화번호 CHAR(20) NOT NULL,
+주민번호 CHAR(14) NOT NULL,
+주소 VARCHAR(20) NULL,
+마일리지 INT,
+CONSTRAINT 주민번호_중복 unique(주민번호)
+);

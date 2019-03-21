@@ -1,0 +1,465 @@
+package SNAKE;
+import CONTROL.*;
+import DISPLAY.DisFactory;
+import DISPLAY.Display;
+import GAME.*;
+
+import javax.swing.JFrame;
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.image.BufferedImage;
+
+public class Snake extends JFrame implements Runnable, KeyListener {
+  public int Snakelen = 3;
+  private boolean start = false;
+  private String fname = "map[0].txt";
+  private String page = "intro";
+  private String keyname = "RIGHT";
+  public char pArr[][] = new char[23][23];
+  public char Snake[] = new char [40];
+  public int xy[][] = new int[2][40];
+  private int tmp_xy[][] = new int[2][40];
+  private BufferedImage bufimage = new BufferedImage(582, 602, BufferedImage.TYPE_INT_RGB);
+  private GameMapLoad gmload = new GameMapLoad();
+  private CtrlFactory cfac = new CtrlFactory();
+  private Control control = null;
+  private DisFactory dfac = new DisFactory();
+  private Display dis = null;
+  private Memento memento = new Memento();
+  public Snake() {
+    this.addKeyListener(this);
+    this.setSize(582, 602);
+    this.setLocation(300, 90);
+    this.setTitle("Snake Game");
+    this.setResizable(false);
+    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    this.setVisible(true);
+    gmload = new GameFoodLoad(gmload);
+    control = cfac.controlFactory(page);
+  }
+  public void IintGame() {
+    memento.InitGame(Snake, xy);
+    Snakelen = memento.getSnakelen();
+    keyname = memento.getKeyname();
+    control = cfac.controlFactory(page);
+    pArr = gmload.Load(fname);
+  }
+  public boolean Clash() {
+    int i=0;
+    if(pArr[xy[1][0]][xy[0][0]]=='1') {
+      return true;
+    }
+    for(i=1;i<Snakelen;i++) {
+      if(xy[0][0]==xy[0][i]&&xy[1][0]==xy[1][i]) {
+        return true;
+      }
+    }
+    return false;
+  }
+  public void run() {
+    int i=0;
+    int stage_int=0;
+    while(page.equals("intro")) {
+      try {Thread.sleep(100);} catch (InterruptedException e) {e.printStackTrace();}
+    }
+    this.IintGame();
+    while(page.equals("gameplay")) {
+      if(Snakelen==33) {
+        start = false;
+        if(stage_int==4) {
+          page = "congrat";
+          repaint();
+          break;
+        }
+        while(true) {
+          try {Thread.sleep(100);} catch (InterruptedException e) {e.printStackTrace();}
+          if(start) break;
+        }
+        fname = fname.replace(String.valueOf(stage_int), String.valueOf(++stage_int));
+        this.IintGame();
+      }
+      if(pArr[xy[1][0]][xy[0][0]]=='3') {
+        pArr[xy[1][0]][xy[0][0]]='0';
+        Snake[Snakelen++]='2';
+      }
+      if(Clash()) {
+        start = false;
+        while(true) {
+          try {Thread.sleep(100);} catch (InterruptedException e) {e.printStackTrace();}
+          if(start) break;
+        }
+        pArr = gmload.Load(fname);
+        this.IintGame();
+      }
+      try {Thread.sleep(100);} catch (InterruptedException e) {e.printStackTrace();}
+      for(i=0;i<Snakelen;i++) {
+        tmp_xy[0][i]=xy[0][i];
+        tmp_xy[1][i]=xy[1][i];
+      }
+      for(i=0;i<Snakelen-1;i++) {
+        xy[0][i+1]=tmp_xy[0][i];
+        xy[1][i+1]=tmp_xy[1][i];
+      }
+      control.executeCommand(keyname, this);
+      repaint();
+    }
+  }
+  public void paint(Graphics g) {
+    Graphics gp = bufimage.getGraphics();
+    gp.setColor(Color.WHITE);
+    gp.fillRect(0, 0, 582, 602);
+    dis = dfac.displayFactory(page,this);
+    dis.disprint(gp);
+    g.drawImage(bufimage, 0, 0, this);
+  }
+  public void keyPressed(KeyEvent e) {
+    switch(e.getKeyCode()) {
+      case KeyEvent.VK_UP:
+        keyname = "UP";
+        break;
+      case KeyEvent.VK_DOWN:
+        keyname = "DOWN";
+        break;
+      case KeyEvent.VK_LEFT:
+        keyname = "LEFT";
+        break;
+      case KeyEvent.VK_RIGHT:
+        keyname = "RIGHT";
+        break;
+      case KeyEvent.VK_ENTER:
+        page = "gameplay";
+        start = true;
+        break;
+      case KeyEvent.VK_ESCAPE:
+        System.exit(0);
+        break;
+    }
+  }
+  public void keyReleased(KeyEvent e) {}
+  public void keyTyped(KeyEvent e) {}
+  public static void main(String[] args) {
+    Thread thread = new Thread(new Snake());
+    thread.start();
+  }
+}
+============================================================
+package GAME;
+import java.io.*;
+
+public class GameMapLoad {
+  public char[][] Load(String fname) {
+    int i=0,j=0;
+    String str = null;
+    char Map[][] = new char[23][23];
+    try {
+      DataInputStream dis = new DataInputStream(new FileInputStream(new File(fname)));
+      for(i=0;i<23;i++) {
+        str = dis.readLine();
+        for(j=0;j<23;j++) {
+          Map[i][j] = str.charAt(j);
+        }
+      }
+      dis.close();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    return Map;
+  }
+}
+============================================================
+package GAME;
+
+public abstract class GameLoadDecorator extends GameMapLoad {
+  public abstract char[][] Load(String fname);
+}
+============================================================
+package GAME;
+import java.util.Random;
+
+public class GameFoodLoad extends GameLoadDecorator {
+  GameMapLoad gmload;
+  public GameFoodLoad(GameMapLoad gml) {
+    gmload = gml;
+  }
+  public char[][] Load(String fname) {
+    int i=0,j=0,foodnum=0;
+    char Map[][] = new char[23][23];
+    Random rd = new Random(System.currentTimeMillis());
+    Map = gmload.Load(fname);
+    while(true) {
+      i = rd.nextInt(23);
+      j = rd.nextInt(23);
+      if(Map[i][j]=='0') {
+        Map[i][j]='3';
+        foodnum++;
+      }
+      if(foodnum==30) break;
+    }
+    return Map;
+  }
+}
+============================================================
+package DISPLAY;
+
+import SNAKE.Snake;
+
+public class DisFactory {
+  public Display displayFactory(String page, Snake s) {
+    Display dis = null;
+    if(page.equals("intro")) {
+      dis = DisINTRO.getInstance();
+    }
+    else if(page.equals("gameplay")) {
+      dis = DisGAMEPLAY.getInstance(s);
+    }
+    else if(page.equals("congrat")) {
+      dis = DisCONGRAT.getInstance();
+    }
+    return dis;
+  }
+}
+============================================================
+package DISPLAY;
+
+import java.awt.Graphics;
+
+public abstract class Display {
+  public abstract void disprint(Graphics gp);
+}
+============================================================
+package DISPLAY;
+
+import java.awt.Color;
+import java.awt.Graphics;
+
+public class DisINTRO extends Display {
+  private static DisINTRO disintro = new DisINTRO();
+  private DisplayFont disfont = DisplayFont.getInstance();
+  public static DisINTRO getInstance() {
+    return disintro;
+  }
+  public void disprint(Graphics gp) {
+    disfont.StringPrint(gp, "SNAKE GAME", 25, 200, Color.GRAY, 80);
+    disfont.StringPrint(gp, "press ENTER key to START GAME", 125, 400, Color.GRAY, 20);
+  }
+}
+============================================================
+package DISPLAY;
+
+import java.awt.Color;
+import java.awt.Graphics;
+
+import SNAKE.Snake;
+
+public class DisGAMEPLAY extends Display {
+  private static Snake snake = null;
+  private static DisGAMEPLAY disgameplay = new DisGAMEPLAY();
+  private DisplayFont disfont = DisplayFont.getInstance();
+  public static DisGAMEPLAY getInstance(Snake s) {
+    snake = s;
+    return disgameplay;
+  }
+  public void disprint(Graphics gp) {
+    int i=0,j=0;
+    for(i=0;i<23;i++) {
+      for(j=0;j<23;j++) {
+        if(snake.pArr[i][j]=='1') {
+          gp.setColor(Color.GRAY);
+          gp.fillRect(3+(j*25), 23+(i*25), 25, 25);
+          gp.setColor(Color.BLACK);
+          gp.drawRect(3+(j*25), 23+(i*25), 25, 25);
+        }
+        else if(snake.pArr[i][j]=='3') {
+          gp.setColor(Color.GREEN);
+          gp.fillRect(3+(j*25), 23+(i*25), 25, 25);
+          gp.setColor(Color.BLACK);
+          gp.drawRect(3+(j*25), 23+(i*25), 25, 25);
+        }
+      }
+    }
+    gp.setColor(Color.ORANGE);
+    for(i=0;i<snake.Snakelen;i++) {
+      if(snake.Snake[i]=='4') {
+        gp.fillOval(3+(snake.xy[0][i]*25), 23+(snake.xy[1][i]*25), 25, 25);
+      }
+      else if(snake.Snake[i]=='2') {
+        gp.fillRect(3+(snake.xy[0][i]*25), 23+(snake.xy[1][i]*25), 25, 25);
+      }
+    }
+    if(snake.Snakelen==33) {
+      disfont.StringPrint(gp, "YOU WIN", 200, 200, Color.BLACK, 30);
+      disfont.StringPrint(gp, "NEXT STAGE LOADING..", 110, 300, Color.BLACK, 30);
+      disfont.StringPrint(gp, "press ENTER key to START GAME", 45, 400, Color.BLACK, 30);
+    }
+    if(snake.Clash()) {
+      disfont.StringPrint(gp, "GAME OVER", 200, 300, Color.BLACK, 30);
+      disfont.StringPrint(gp, "press ENTER key to RESTART GAME", 26, 400, Color.BLACK, 30);
+    }
+  }
+}
+============================================================
+package DISPLAY;
+
+import java.awt.Color;
+import java.awt.Graphics;
+
+public class DisCONGRAT extends Display {
+  private static DisCONGRAT discongrat = new DisCONGRAT();
+  private DisplayFont disfont = DisplayFont.getInstance();
+  public static DisCONGRAT getInstance() {
+    return discongrat;
+  }
+  public void disprint(Graphics gp) {
+    disfont.StringPrint(gp, "CONGRATULATION!!", 17, 200, Color.GRAY, 55);
+  }
+}
+============================================================
+package DISPLAY;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+
+public class DisplayFont {
+  private static DisplayFont displayfont = new DisplayFont();;
+  public static DisplayFont getInstance() {
+    return displayfont;
+  }
+  public void StringPrint(Graphics gp, String str, int x, int y, Color color, int size) {
+    gp.setColor(color);
+    gp.setFont(new Font(null, Font.BOLD, size));
+    gp.drawString(str, x, y);
+  }
+}
+============================================================
+package CONTROL;
+
+public class CtrlFactory {
+  public Control controlFactory(String page) {
+    Control control = null;
+    CtrlCommand[] ctrlcommand = new CtrlCommand[4];
+    if(page.equals("intro")) {
+      ctrlcommand[0] = CtrlNO.getInstance();
+      ctrlcommand[1] = CtrlNO.getInstance();
+      ctrlcommand[2] = CtrlNO.getInstance();
+      ctrlcommand[3] = CtrlNO.getInstance();
+      control = Control.getInstance(ctrlcommand);
+    }
+    else if(page.equals("gameplay")) {
+      ctrlcommand[0] = CtrlUP.getInstance();
+      ctrlcommand[1] = CtrlDOWN.getInstance();
+      ctrlcommand[2] = CtrlLEFT.getInstance();
+      ctrlcommand[3] = CtrlRIGHT.getInstance();
+      control = Control.getInstance(ctrlcommand);
+    }
+    else if(page.equals("congrat")) {
+      ctrlcommand[0] = CtrlNO.getInstance();
+      ctrlcommand[1] = CtrlNO.getInstance();
+      ctrlcommand[2] = CtrlNO.getInstance();
+      ctrlcommand[3] = CtrlNO.getInstance();
+      control = Control.getInstance(ctrlcommand);
+    }
+    return control;
+  }
+}
+============================================================
+package CONTROL;
+
+import SNAKE.Snake;
+
+public interface CtrlCommand {
+  public void execute(Snake s);
+}
+============================================================
+package CONTROL;
+
+import SNAKE.Snake;
+
+public class CtrlUP implements CtrlCommand {
+  private static CtrlUP ctrlup = new CtrlUP();
+  public static CtrlUP getInstance() {
+    return ctrlup;
+  }
+  public void execute(Snake s) {
+    s.xy[1][0]=s.xy[1][0]-1;
+  }
+}
+============================================================
+package CONTROL;
+
+import SNAKE.Snake;
+
+public class CtrlRIGHT implements CtrlCommand {
+  private static CtrlRIGHT ctrlright = new CtrlRIGHT();
+  public static CtrlRIGHT getInstance() {
+    return ctrlright;
+  }
+  public void execute(Snake s) {  
+    s.xy[0][0]=s.xy[0][0]+1;
+  }
+}
+============================================================
+package CONTROL;
+
+import SNAKE.Snake;
+
+public class CtrlLEFT implements CtrlCommand {
+  private static CtrlLEFT ctrlleft = new CtrlLEFT();
+  public static CtrlLEFT getInstance() {
+    return ctrlleft;
+  }
+  public void execute(Snake s) {
+    s.xy[0][0]=s.xy[0][0]-1;
+  }
+}
+============================================================
+package CONTROL;
+
+import SNAKE.Snake;
+
+public class CtrlDOWN implements CtrlCommand {
+  private static CtrlDOWN ctrldown = new CtrlDOWN();
+  public static CtrlDOWN getInstance() {
+    return ctrldown;
+  }
+  public void execute(Snake s) {
+    s.xy[1][0]=s.xy[1][0]+1;
+  }
+}
+============================================================
+package CONTROL;
+
+import SNAKE.Snake;
+
+public class CtrlNO implements CtrlCommand {
+  private static CtrlNO ctrlno = new CtrlNO();
+  public static CtrlNO getInstance() {
+    return ctrlno;
+  }
+  public void execute(Snake s) {  
+    System.out.println("No Action!!!");
+  }
+}
+============================================================
+package CONTROL;
+
+import SNAKE.Snake;
+
+public class Control {
+  private static CtrlCommand[] ctrlcommand = null;
+  private final String keys[] = {"UP", "DOWN", "LEFT" ,"RIGHT"};
+  private static Control control = new Control();
+  public static Control getInstance(CtrlCommand[] c) {
+    ctrlcommand = c;
+    return control;
+  }
+  public void executeCommand(String key, Snake s) {
+    int i=0;
+    for(i=0;i<keys.length;i++){
+      if(key.equals(keys[i])){
+        ctrlcommand[i].execute(s);
+      }
+    }
+  }
+}
+============================================================

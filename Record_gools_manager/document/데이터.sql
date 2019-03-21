@@ -1,0 +1,41 @@
+INSERT INTO 고객 VALUES('test_a','권순봉','123-1111','123456-1111111','심곡동',0);
+INSERT INTO 고객 VALUES('test_b','김려완','123-1112','123456-1111112','연희동',0);
+INSERT INTO 고객 VALUES('test_c','나호정','123-1113','123456-1111113','성황동',0);
+INSERT INTO 고객 VALUES('test_d','문영웅','123-1114','123456-1111114','두정동',0);
+INSERT INTO 고객 VALUES('test_e','박인엽','123-1115','123456-1111115','심곡동',0);
+INSERT INTO 고객 VALUES('test_f','서기덕','123-1116','123456-1111116','연희동',0);
+INSERT INTO 고객 VALUES('test_g','송유찬','123-1117','123456-1111117','두정동',0);
+INSERT INTO 고객 VALUES('test_h','양진모','123-1118','123456-1111118','연희동',0);
+INSERT INTO 고객 VALUES('test_i','엄광용','123-1119','123456-1111119','심곡동',0);
+
+--
+INSERT INTO 음반 VALUES('1','SCANDAL 1집','강타와 바네스','SM엔터테이먼트',20,8900);
+INSERT INTO 음반 VALUES('2','CALL IT LOVE 2집','이안','예당엔터테인먼트',20,11000);
+INSERT INTO 음반 VALUES('3','눈물샘 3집','별 [STAR]','씨제이뮤직',20,11000);
+INSERT INTO 음반 VALUES('4','신시 2집','소울엔진','씨제이뮤직',20,11000);
+INSERT INTO 음반 VALUES('5','BLOOD MONEY','MOBB DEEP','UNIVERSAL',20,14300);
+INSERT INTO 음반 VALUES('6','INTO PARADISE','SISSEL (시셀)','UNIVERSAL',20,14300);
+INSERT INTO 음반 VALUES('7','IV','GODSMACK (갓스맥)','UNIVERSAL ',20,14300);
+INSERT INTO 음반 VALUES('8',' DARK ANGEL  ','이효리','S씨제이 미디어라인',20,8900);
+
+--
+
+INSERT INTO 입고음반 VALUES('1','06/5/20',7000,10,'1');
+INSERT INTO 입고음반 VALUES('2','06/5/20',8000,20,'2');
+INSERT INTO 입고음반 VALUES('3','06/5/20',8000,20,'3');
+INSERT INTO 입고음반 VALUES('4','06/5/20',8000,20,'4');
+INSERT INTO 입고음반 VALUES('5','06/5/20',8000,20,'5');
+INSERT INTO 입고음반 VALUES('6','06/5/20',9000,20,'6');
+INSERT INTO 입고음반 VALUES('7','06/5/20',9000,20,'7');
+INSERT INTO 입고음반 VALUES('8','06/5/20',9000,20,'8');
+INSERT INTO 입고음반 VALUES('9','06/5/25',7000,10,'1');
+
+-
+
+INSERT INTO 판매 VALUES('test_a','1','06/5/20',1);
+INSERT INTO 판매 VALUES('test_a','2','06/5/20',1);
+INSERT INTO 판매 VALUES('test_a','3','06/5/20',1);
+INSERT INTO 판매 VALUES('test_c','1','06/5/20',1);
+INSERT INTO 판매 VALUES('test_c','6','06/5/20',3);
+INSERT INTO 판매 VALUES('test_c','4','06/5/20',1);
+INSERT INTO 판매 VALUES('test_c','2','06/5/20',1);

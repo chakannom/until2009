@@ -1,0 +1,4 @@
+TARGETNAME=pcssmonitor
+TARGETPATH=..\release
+TARGETTYPE=DRIVER
+SOURCES=pcssmonitor.c 

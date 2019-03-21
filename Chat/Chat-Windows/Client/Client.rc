@@ -1,0 +1,144 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Korean resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+#ifdef _WIN32
+LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
+#pragma code_page(949)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_CLIENT_DLG DIALOG DISCARDABLE  0, 0, 152, 169
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "YS Client"
+FONT 9, "굴림"
+BEGIN
+    PUSHBUTTON      "보내기",IDC_BNSEND,103,128,42,14
+    PUSHBUTTON      "닫기",IDC_BNCLOSE,112,148,33,14
+    EDITTEXT        IDC_EDIT_SEND,7,128,90,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "접속",IDC_BNCONNECT,7,148,33,14
+    PUSHBUTTON      "해제",IDC_BNDISCONNECT,42,148,33,14
+    EDITTEXT        IDC_EDIT_CHAT,7,7,138,117,ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_READONLY | WS_VSCROLL
+    PUSHBUTTON      "대화명",IDC_BNID,77,148,33,14
+END
+
+IDD_CONNECTDLG DIALOG DISCARDABLE  0, 0, 151, 49
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "접속"
+FONT 9, "굴림"
+BEGIN
+    PUSHBUTTON      "OK",IDOK,72,27,33,14
+    PUSHBUTTON      "Cancel",IDCANCEL,111,27,33,14
+    EDITTEXT        IDC_PORT,44,27,22,14,ES_NUMBER
+    LTEXT           "IP 주소    :",IDC_STATIC,7,11,34,8
+    LTEXT           "Port 번호 :",IDC_STATIC,7,31,34,8
+    CONTROL         "IPAddress4",IDC_IPADDRESS,"SysIPAddress32",WS_TABSTOP,
+                    44,7,100,15
+END
+
+IDD_IDDLG DIALOG DISCARDABLE  0, 0, 139, 27
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "ID 바꾸기"
+FONT 9, "굴림"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,87,7,45,14
+    LTEXT           "아이디 :",IDC_STATIC,7,10,26,8
+    EDITTEXT        IDC_ID,33,7,51,14,ES_AUTOHSCROLL
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_CLIENT_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 145
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 162
+    END
+
+    IDD_CONNECTDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 144
+        VERTGUIDE, 44
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 42
+    END
+
+    IDD_IDDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 132
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 20
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // Korean resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

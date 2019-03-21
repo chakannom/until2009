@@ -1,0 +1,90 @@
+<html>
+
+<head>
+<meta http-equiv='content-type' content='text/html; charset=uft-8'>
+<title>menu</title>
+<script language='JavaScript'>
+<!--
+function na_hide_layer(lname)
+{
+	if(document.getElementById) {
+		document.getElementById(lname).style.visibility = 'hidden';
+	} else if(document.layers) {
+		document.layers[lname].visibility = 'hide'
+	} else if(document.all) {
+		document.all(lname).style.visibility = 'hidden' 
+	}
+}
+
+function na_show_layer(lname)
+{
+	if (na_show_layer.arguments.length <= 1) { // don't delete, backword compatibility
+		if(document.getElementById) {
+			document.getElementById(lname).style.visibility = 'visible';
+		} else if(document.layers) {
+			document.layers[lname].visibility = 'show';
+		} else if(document.all) {
+			document.all(lname).style.visibility = 'visible';
+		}
+	} else {
+		if(document.getElementById) {
+			document.getElementById(lname).style.visibility = 'hidden';
+		} else if(document.layers) {
+			document.layers[lname].visibility = 'hide';
+		} else if(document.all) {
+			document.all(lname).style.visibility = 'hidden';
+		}
+	}
+}
+
+function na_init_layer_events()
+{
+	if(document.layers) {
+		document.layers['layer1'].captureEvents(Event.MOUSEOVER|Event.MOUSEOUT|Event.MOUSEUP);
+		document.layers['layer1'].onmouseout = new Function("na_hide_layer('layer1');");
+		document.layers['layer1'].onmouseover = new Function("na_show_layer('layer1');");
+		document.layers['layer2'].captureEvents(Event.MOUSEOVER|Event.MOUSEOUT|Event.MOUSEUP);
+		document.layers['layer2'].onmouseout = new Function("na_hide_layer('layer2');");
+		document.layers['layer2'].onmouseover = new Function("na_show_layer('layer2');");
+	}
+}
+// -->
+</script>
+</head>
+
+<body bgcolor='white' text='black' vlink='purple' alink='red' leftmargin='0' marginwidth='0' topmargin='0' marginheight='0' OnLoad='na_init_layer_events();'>
+<table width='980' cellpadding='0' cellspacing='0'>
+	<tr>
+		<td width='980' colspan='2' height='180'>
+			<p><img src='img/main.jpg' border='0' width='980' height='180'></p>
+		</td>
+	</tr>
+	<tr>
+		<td width='196' height='40'>	
+			<p><iframe name='login' src='customer/login.php' width='196' height='77' vspace='0' hspace='0' marginwidth='0' marginheight='0' frameborder='0' scrolling='no'></iframe></p>
+		</td>
+		<td width='784' height='40'>
+			<table cellpadding='0' cellspacing='0' width='774' height='72'>
+				<tr>
+					<td width='774' height='30' align='center'>
+						<b><font face='HY나무M'><span style='font-size:18pt;'>회사소개&nbsp;&nbsp;&nbsp;&nbsp;<a OnMouseOver="na_show_layer('layer1');">메뉴</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='customer/person_order.php' target='main' OnMouseOver="na_show_layer('layer2');">주문</a>&nbsp;&nbsp;&nbsp;&nbsp;게시판&nbsp;&nbsp;&nbsp;&nbsp;<a href='company/login.php' target='_blank'>공급자모드</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='admin/login.php' target='_blank'>관리자모드</a></span></font></b>
+					</td>
+				</tr>
+				<tr>
+					<td width='774' height='27'>
+						<div id='layer1' style='width:400px; height:20px; position:relative; left:0px; top:0px; z-index:1; visibility:hidden;' OnMouseOver="na_show_layer('layer1');" OnMouseOut="na_hide_layer('layer1');">
+							<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;신제품&nbsp;|&nbsp;트리플 치즈 피자&nbsp;|&nbsp;더블 크러스트 피자</b>
+						</div>
+						<div id='layer2' style='width:200px; height:20px; position:relative; left:200px; top:-20px; z-index:0; visibility:hidden;' OnMouseOver="na_show_layer('layer2');" OnMouseOut="na_hide_layer('layer2');">
+							<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='customer/person_order.php' target='main'>주문</a>&nbsp;|&nbsp;<a href='customer/order_cancel.php' target='main'>주문 취소</a></b>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+</body>
+</html>
+

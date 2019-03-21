@@ -1,0 +1,21 @@
+TARGETNAME=ddkhook
+TARGETPATH=obj
+TARGETTYPE=DRIVER
+
+TARGETLIBS= $(DDK_LIB_PATH)\ntstrsafe.lib
+
+# 추가 참조 디렉토리 
+#
+INCLUDES=..\
+
+# warning level 3	(W4 로 지정하면 표준 ddk 헤더에서 에러남)
+#
+MSC_WARNING_LEVEL=/W3
+
+#
+# setup visualC++ source browsing
+#
+BROWSER_INFO=1
+BSCMAKE_FLAGS=$(BSCMAKE_FLAGS) -n
+
+SOURCES=ddkhook.cpp ddkhookssdt.cpp filefunc.cpp

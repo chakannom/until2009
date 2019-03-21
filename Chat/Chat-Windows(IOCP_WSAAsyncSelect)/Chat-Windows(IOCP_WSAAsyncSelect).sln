@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Server", "Server\Server.vcxproj", "{115A5A23-B804-4BB1-AF08-5AA94A0B5D91}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Client", "Client\Client.vcxproj", "{1A9ABAAE-D035-47F0-BF02-9F44E4DE6A4B}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{115A5A23-B804-4BB1-AF08-5AA94A0B5D91}.Debug|Win32.ActiveCfg = Debug|Win32
+		{115A5A23-B804-4BB1-AF08-5AA94A0B5D91}.Debug|Win32.Build.0 = Debug|Win32
+		{115A5A23-B804-4BB1-AF08-5AA94A0B5D91}.Release|Win32.ActiveCfg = Release|Win32
+		{115A5A23-B804-4BB1-AF08-5AA94A0B5D91}.Release|Win32.Build.0 = Release|Win32
+		{1A9ABAAE-D035-47F0-BF02-9F44E4DE6A4B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1A9ABAAE-D035-47F0-BF02-9F44E4DE6A4B}.Debug|Win32.Build.0 = Debug|Win32
+		{1A9ABAAE-D035-47F0-BF02-9F44E4DE6A4B}.Release|Win32.ActiveCfg = Release|Win32
+		{1A9ABAAE-D035-47F0-BF02-9F44E4DE6A4B}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

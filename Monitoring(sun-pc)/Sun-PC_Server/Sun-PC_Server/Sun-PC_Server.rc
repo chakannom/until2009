@@ -1,0 +1,191 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 한국어 resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+#ifdef _WIN32
+LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
+#pragma code_page(949)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_SERVER_DLG DIALOGEX 0, 0, 396, 191
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "SUN-PC Server"
+MENU IDR_SERVER_MENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    RTEXT           "0",IDC_STC_PCCNT,7,7,93,12,SS_CENTERIMAGE
+    RTEXT           "0",IDC_STC_USERCNT,7,27,93,12,SS_CENTERIMAGE
+    PUSHBUTTON      "SERVER OFF",IDC_BT_SERVEROFF,323,172,50,12,NOT WS_VISIBLE
+    CONTROL         "",IDC_LIST_LOGINUSER,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,211,25,156,120
+    PUSHBUTTON      "SERVER ON",IDC_BT_SERVERON,324,160,50,12
+    EDITTEXT        IDC_EDIT_CONTENT,13,82,176,68,ES_MULTILINE | ES_AUTOVSCROLL | ES_READONLY | WS_VSCROLL
+END
+
+IDD_USERMNG_DLG DIALOGEX 0, 0, 343, 163
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "사용자 등록 및 관리"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_LIST_USER,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,74,329,82
+    EDITTEXT        IDC_EDIT_USERMNG_MDID,48,47,78,14,ES_AUTOHSCROLL | WS_DISABLED
+    LTEXT           "아이디 : ",IDC_STATIC,15,50,32,8
+    GROUPBOX        "수정 및 삭제",IDC_STATIC,7,38,329,29
+    LTEXT           "패스워드 : ",IDC_STATIC,132,50,40,8
+    EDITTEXT        IDC_EDIT_USERMNG_MDPW,173,47,78,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "수  정",IDC_BT_USERMNG_MODIFY,253,47,36,14
+    PUSHBUTTON      "삭  제",IDC_BT_USERMNG_DEL,292,47,36,14
+    EDITTEXT        IDC_EDIT_USERMNG_ADDID,48,15,78,14,ES_AUTOHSCROLL | WS_GROUP
+    LTEXT           "아이디 : ",IDC_STATIC,15,18,32,8
+    GROUPBOX        "추가",IDC_STATIC,7,7,329,29
+    LTEXT           "패스워드 : ",IDC_STATIC,132,18,40,8
+    EDITTEXT        IDC_EDIT_USERMNG_ADDPW,173,15,78,14,ES_AUTOHSCROLL | WS_GROUP
+    PUSHBUTTON      "추  가",IDC_BT_USERMNG_ADD,253,15,36,14,WS_GROUP
+END
+
+IDD_ADMINPW_DLG DIALOGEX 0, 0, 157, 28
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "관리자 패스워드 변경"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT_ADMINPW_MDPW,46,7,59,14
+    LTEXT           "패스워드 :",IDC_STATIC,8,9,38,8
+    PUSHBUTTON      "확인",IDC_BT_ADMINPW_MODIFY,108,7,42,14
+END
+
+IDD_CHAT_DLG DIALOGEX 0, 0, 192, 159
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Chat"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT_CHAT_CONTENT,7,7,178,127,ES_MULTILINE | ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT_CHAT_SENDMSG,7,138,123,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "SEND",IDC_BT_CHAT_SEND,135,138,50,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_SERVER_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 389
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 184
+    END
+
+    IDD_USERMNG_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 336
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 156
+    END
+
+    IDD_ADMINPW_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 150
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 21
+    END
+
+    IDD_CHAT_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 185
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 152
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_SERVER_MENU MENU 
+BEGIN
+    POPUP "클라이언트 관리"
+    BEGIN
+        MENUITEM "사용자 등록 및 관리",                 ID_M_USERMNG
+        MENUITEM "관리자 패스워드 변경",                 ID_M_ADMINPWCHANGE
+    END
+    POPUP "클라이언트 제어"
+    BEGIN
+        POPUP "모든 PC Auto Run"
+        BEGIN
+            MENUITEM "ON",                          ID_M_CLIENTPCAUTORUN_ON
+            MENUITEM "OFF",                         ID_M_CLIENTPCAUTORUN_OFF
+        END
+        MENUITEM "모든 PC 시스템 종료",                ID_M_CLIENTPCSHUTDOWN
+    END
+END
+
+#endif    // 한국어 resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

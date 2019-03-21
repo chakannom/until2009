@@ -1,0 +1,186 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 한국어 resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+#ifdef _WIN32
+LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
+#pragma code_page(949)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_CLIENT_DLG DIALOGEX 0, 0, 264, 213
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_BORDER | WS_SYSMENU
+EXSTYLE WS_EX_TOPMOST
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT_CONTENT,7,7,98,74,ES_MULTILINE | ES_AUTOVSCROLL | ES_READONLY | WS_VSCROLL
+    PUSHBUTTON      "서버주소설정",IDC_BT_ADDRSET,7,82,50,14,WS_DISABLED
+    PUSHBUTTON      "관리자로그인",IDC_BT_ADMINLOGIN,7,98,50,14
+    PUSHBUTTON      "프로그램종료",IDC_BT_PROGEXIT,7,114,50,14,WS_DISABLED
+    PUSHBUTTON      "관리자로그아웃",IDC_BT_ADMINLOGOUT,7,129,50,14,NOT WS_VISIBLE
+    PUSHBUTTON      "자동실행 ON",IDC_BT_AUTORUNON,7,145,50,14,WS_DISABLED
+    PUSHBUTTON      "자동실행 OFF",IDC_BT_AUTORUNOFF,7,161,50,14,WS_DISABLED
+    PUSHBUTTON      "로그아웃",IDC_BT_LOGOUT,7,178,50,14,WS_DISABLED
+    PUSHBUTTON      "SEND",IDC_BT_SENDMSG,146,172,50,14,WS_DISABLED
+    EDITTEXT        IDC_EDIT_SENDMSG,98,172,40,14,ES_AUTOHSCROLL | WS_DISABLED
+END
+
+IDD_CONNECT_DLG DIALOGEX 0, 0, 208, 43
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_CAPTION
+CAPTION "CONNECT"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_IPADDRESS,"SysIPAddress32",WS_TABSTOP,60,7,100,15
+    LTEXT           "아이피주소 :",IDC_STATIC,11,10,46,8
+    LTEXT           "포트번호 :",IDC_STATIC,19,25,38,8
+    EDITTEXT        IDC_EDIT_PORTNUM,60,22,48,14,ES_AUTOHSCROLL | ES_NUMBER
+    PUSHBUTTON      "확인",IDC_BT_CONNECTOK,162,7,39,14
+    PUSHBUTTON      "취소",IDC_BT_CONNECTCANCEL,162,22,39,14
+END
+
+IDD_INITVIEW_DLG DIALOGEX 0, 0, 390, 205
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_VISIBLE
+EXSTYLE WS_EX_TOPMOST
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    PUSHBUTTON      "로그인",IDC_BT_LOGIN,187,81,50,14,WS_GROUP
+    EDITTEXT        IDC_EDIT_LOGINID,81,52,40,14
+    EDITTEXT        IDC_EDIT_LOGINPW,77,81,40,14
+END
+
+IDD_ADMINLOGIN_DLG DIALOGEX 0, 0, 157, 42
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_CAPTION
+CAPTION "관리자 로그인"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT_ADMINLOGIN,46,7,59,14
+    LTEXT           "패스워드 :",IDC_STATIC,8,9,38,8
+    PUSHBUTTON      "확인",IDC_BT_ADMINOK,108,7,42,14
+    PUSHBUTTON      "취소",IDC_BT_ADMINCANCEL,108,21,42,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_CLIENT_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 257
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 206
+    END
+
+    IDD_CONNECT_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 201
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 36
+    END
+
+    IDD_INITVIEW_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 383
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 198
+    END
+
+    IDD_ADMINLOGIN_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 150
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 35
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_TRAYPOPUP_MENU MENU 
+BEGIN
+    POPUP "TrayIconPopupMenu"
+    BEGIN
+        MENUITEM "SUN-PC_CLIENT 소개",            ID_TRAYICONPOPUPMENU_SUN
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON_CLIENT         ICON                    "Sun-PC_Client.ico"
+#endif    // 한국어 resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

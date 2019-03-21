@@ -1,0 +1,4 @@
+TARGETNAME=pcsslock
+TARGETPATH=..\release
+TARGETTYPE=DRIVER
+SOURCES=pcsslock.c pcsslockhookssdt.c

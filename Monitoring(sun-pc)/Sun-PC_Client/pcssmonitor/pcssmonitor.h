@@ -1,0 +1,45 @@
+#ifndef PCSSMONITOR_H_INCLUDED
+#define PCSSMONITOR_H_INCLUDED
+
+#include <ntddk.h>
+
+
+#define MAXLINE 256
+#define DEVICE_NAME L"\\Device\\PcssMon"
+#define DOS_DEVICE_NAME L"\\DosDevices\\dosPcssMon"
+#define PCSSMON_EVENT_NAME L"\\BaseNamedObjects\\PcssMonEvent"
+
+#define IOCTL_PCSSMON_SHARDEVENT CTL_CODE(FILE_DEVICE_UNKNOWN, 0x0800, METHOD_BUFFERED, FILE_WRITE_ACCESS)
+#define IOCTL_PCSSMON_PROCINFO CTL_CODE(FILE_DEVICE_UNKNOWN, 0x0801, METHOD_BUFFERED, FILE_READ_ACCESS | FILE_WRITE_ACCESS)
+
+typedef struct _PcssMonCallbackInfo
+{
+	HANDLE hParentID;
+	HANDLE hProcessID;
+	BOOLEAN bCreate;
+}PCSSMON_CALLBACK_INFO, *PPCSSMON_CALLBACK_INFO;
+
+typedef struct _DEVICE_EXTENTION
+{
+	PDEVICE_OBJECT pDevObj;
+	HANDLE hProcessHandle;
+	PKEVENT pProcessEvent;
+
+	HANDLE hParentID;
+	HANDLE hProcessID;
+	BOOLEAN bCreate;
+
+} DEVICE_EXTENSION, *PDEVICE_EXTENSION;
+
+
+PDEVICE_OBJECT g_pDevObj;
+
+
+NTSTATUS OnCreate(PDEVICE_OBJECT pDeviceObject, PIRP pIrp);
+NTSTATUS OnClose(PDEVICE_OBJECT pDeviceObject, PIRP pIrp);
+NTSTATUS OnControl(PDEVICE_OBJECT pDeviceObject, PIRP pIrp);
+VOID DriverUnload(PDRIVER_OBJECT pDriverObject);
+VOID ProcessMonCallback(HANDLE hParentID, HANDLE hProcessID, BOOLEAN bCreate);
+
+
+#endif  // PCSSMONITOR_H_INCLUDED

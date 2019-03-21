@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sun-PC_Server", "Sun-PC_Server\Sun-PC_Server.vcxproj", "{CE6A7C12-B4FF-492E-BB93-3CD3AA2AFDC6}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "packet", "packet\packet.vcxproj", "{49F53135-ADAD-46C9-80A4-EC18EED30263}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CE6A7C12-B4FF-492E-BB93-3CD3AA2AFDC6}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CE6A7C12-B4FF-492E-BB93-3CD3AA2AFDC6}.Debug|Win32.Build.0 = Debug|Win32
+		{CE6A7C12-B4FF-492E-BB93-3CD3AA2AFDC6}.Release|Win32.ActiveCfg = Release|Win32
+		{CE6A7C12-B4FF-492E-BB93-3CD3AA2AFDC6}.Release|Win32.Build.0 = Release|Win32
+		{49F53135-ADAD-46C9-80A4-EC18EED30263}.Debug|Win32.ActiveCfg = Debug|Win32
+		{49F53135-ADAD-46C9-80A4-EC18EED30263}.Debug|Win32.Build.0 = Debug|Win32
+		{49F53135-ADAD-46C9-80A4-EC18EED30263}.Release|Win32.ActiveCfg = Release|Win32
+		{49F53135-ADAD-46C9-80A4-EC18EED30263}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
